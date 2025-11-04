@@ -76,7 +76,7 @@ function clearFilters() {
         v-model="localFilters.serial"
         type="text"
         placeholder="ex: 123ABC"
-        style="padding:4px"
+        style="padding:1px"
       />
     </div>
 
