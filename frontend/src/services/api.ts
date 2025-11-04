@@ -12,26 +12,35 @@ export const api = axios.create({
 export const socket = io(API_BASE, { transports: ['websocket', 'polling'] });
 
 export interface FetchAlarmsParams {
-  page?: number;
-  limit?: number;
-  type?: AlarmType;
-  deviceType?: DeviceType;
-  checked?: boolean;
-  serial?: string;
-  to?: string;
-  from?: string;
+  page: number | null;
+  limit: number | null;
+  type: AlarmType | null;
+  deviceType: DeviceType | null;
+  checked: boolean | null;
+  serial: string | null;
+  to: string | null;
+  from: string | null;
 }
 
 
-export async function fetchAlarms(params: FetchAlarmsParams = {}) {
+export async function fetchAlarms(params: FetchAlarmsParams = {
+  page: null,
+  limit: null,
+  type: null,
+  deviceType: null,
+  checked: null,
+  serial: null,
+  to: null,
+  from: null
+}) {
   const query: Record<string, string | number | boolean> = {
     page: params.page ?? 1,
     limit: params.limit ?? 50
   };
 
-  if (params.type !== undefined) query.type = params.type;
-  if (params.deviceType !== undefined) query.deviceType = params.deviceType;
-  if (params.checked !== undefined) query.checked = params.checked;
+  if (params.type) query.type = params.type;
+  if (params.deviceType) query.deviceType = params.deviceType;
+  if (params.checked) query.checked = params.checked;
   if (params.serial) query.serial = params.serial;
 
   if (params.to && !params.from) query.before = params.to;
