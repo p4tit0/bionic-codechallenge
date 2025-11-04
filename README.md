@@ -96,7 +96,7 @@ git clone https://github.com/p4tit0/bionic-codechallenge.git
 cd bionic-codechallenge
 ```
 ---
-### Subindo o MongoDB com Docker (opcional)
+### Subindo o MongoDB com Docker
 
 ```bash
 docker compose up -d
